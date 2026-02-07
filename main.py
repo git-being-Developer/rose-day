@@ -1,9 +1,14 @@
 from datetime import timedelta, datetime, timezone
 from fastapi import FastAPI, Form, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
+from starlette.staticfiles import StaticFiles
+
 from supabase_client import supabase
 
 app = FastAPI()
+
+# Mount static files for serving images
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.post("/create")
 async def create_rose(
@@ -68,6 +73,29 @@ async def home():
                 overflow-x: hidden;
             }
             
+            .main-wrapper {
+                display: flex;
+                gap: 20px;
+                align-items: center;
+                justify-content: center;
+                max-width: 1400px;
+                width: 100%;
+                position: relative;
+                z-index: 10;
+            }
+            
+            .container {
+                background: rgba(255, 255, 255, 0.95);
+                border-radius: 30px;
+                padding: 50px 40px;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+                max-width: 550px;
+                width: 100%;
+                animation: slideIn 0.8s ease-out;
+                backdrop-filter: blur(10px);
+                flex-shrink: 0;
+            }
+            
             .rose-float {
                 position: absolute;
                 font-size: 30px;
@@ -78,6 +106,17 @@ async def home():
             @keyframes float {
                 0%, 100% { transform: translateY(0) rotate(0deg); }
                 50% { transform: translateY(-30px) rotate(10deg); }
+            }
+            
+            .container {
+                background: rgba(255, 255, 255, 0.95);
+                border-radius: 30px;
+                padding: 50px 40px;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+                max-width: 550px;
+                width: 100%;
+                animation: slideIn 0.8s ease-out;
+                backdrop-filter: blur(10px);
             }
             
             .container {
@@ -210,6 +249,150 @@ async def home():
                 content: "⏱️";
             }
             
+            .tip-jar {
+                margin-top: 40px;
+                margin-bottom: 20px;
+                text-align: center;
+                position: relative;
+            }
+            .tip-jar::after {
+    content: "";
+    display: block;
+    width: 60%;
+    height: 1px;
+    background: rgba(194, 24, 91, 0.15);
+    margin: 30px auto 0;
+}
+            .jar-container {
+                position: relative;
+                width: 180px;
+                margin: 0 auto;
+                padding-top: 15px;
+            }
+            
+            .jar-lid {
+                position: relative;
+                width: 100%;
+                height: 12px;
+                background: linear-gradient(135deg, #e91e63, #c2185b);
+                border-radius: 8px 8px 0 0;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            
+            .jar-lid::before {
+                content: '';
+                position: absolute;
+                top: -4px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 40px;
+                height: 8px;
+                background: linear-gradient(135deg, #e91e63, #c2185b);
+                border-radius: 4px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+            }
+            
+            .jar-body {
+                position: relative;
+                width: 100%;
+                background: linear-gradient(180deg, 
+                    rgba(255, 255, 255, 0.9) 0%,
+                    rgba(255, 245, 248, 0.95) 50%,
+                    rgba(255, 230, 236, 0.9) 100%);
+                border: 3px solid rgba(233, 30, 99, 0.3);
+                border-top: none;
+                border-radius: 0 0 20px 20px;
+                padding: 20px 15px;
+                box-shadow: 
+                    inset 0 4px 8px rgba(255, 255, 255, 0.5),
+                    inset 0 -4px 8px rgba(233, 30, 99, 0.1),
+                    0 8px 16px rgba(0, 0, 0, 0.15);
+                backdrop-filter: blur(10px);
+            }
+            
+            .jar-body::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 10%;
+                width: 30%;
+                height: 60%;
+                background: linear-gradient(135deg, 
+                    rgba(255, 255, 255, 0.6) 0%,
+                    rgba(255, 255, 255, 0) 100%);
+                border-radius: 20px 0 40px 0;
+                pointer-events: none;
+            }
+            
+            .jar-label {
+                background: rgba(255, 255, 255, 0.9);
+                border: 2px dashed #f8bbd0;
+                border-radius: 8px;
+                padding: 8px;
+                margin-bottom: 12px;
+                position: relative;
+                z-index: 1;
+            }
+            
+            .tip-text {
+                color: #c2185b;
+                font-size: 0.7em;
+                font-weight: 600;
+                line-height: 1.3;
+                margin: 0;
+            }
+            
+            .coins {
+                position: absolute;
+                bottom: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 1em;
+                opacity: 0.5;
+                display: flex;
+                gap: 2px;
+            }
+            
+            .coin {
+                animation: coinDrop 2s ease-in-out infinite;
+            }
+            
+            .coin:nth-child(2) { animation-delay: 0.3s; }
+            .coin:nth-child(3) { animation-delay: 0.6s; }
+            
+            @keyframes coinDrop {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-4px); }
+            }
+            
+            .qr-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 6px;
+                position: relative;
+                z-index: 1;
+            }
+            
+            .qr-code {
+                max-width: 90px;
+                width: 100%;
+                border-radius: 6px;
+                border: 2px solid rgba(233, 30, 99, 0.2);
+                box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            }
+            
+            .upi-id {
+                font-family: monospace;
+                font-size: 0.6em;
+                color: #666;
+                background: white;
+                padding: 3px 6px;
+                border-radius: 3px;
+                word-break: break-all;
+                border: 1px solid #f8bbd0;
+            }
+            
             @media (max-width: 600px) {
                 .container {
                     padding: 35px 25px;
@@ -217,6 +400,15 @@ async def home():
                 
                 h1 {
                     font-size: 2em;
+                }
+                
+                .main-wrapper {
+                    flex-direction: column;
+                }
+                
+                .tip-jar {
+                    width: 100%;
+                    margin-top: 20px;
                 }
             }
         </style>
@@ -227,9 +419,10 @@ async def home():
         <div class="rose-float" style="top: 80%; left: 20%; animation-delay: -6s;">🌹</div>
         <div class="rose-float" style="top: 30%; right: 10%; animation-delay: -9s;">💝</div>
         
-        <div class="container">
-            <h1>🌹 Send a Rose</h1>
-            <p class="subtitle">A beautiful gesture that blooms for 24 hours</p>
+        <div class="main-wrapper">
+            <div class="container">
+                <h1>🌹 Send a Rose</h1>
+                <p class="subtitle">A beautiful gesture that blooms for 24 hours</p>
             
             <form method="post" action="/create" id="roseForm">
                 <div class="form-group">
@@ -258,15 +451,38 @@ async def home():
                     </div>
                 </div>
                 
-                <button type="submit">🌹 Create Rose</button>
+                <div class="tip-jar">
+                    <div class="jar-container">
+                        <div class="jar-lid"></div>
+                        <div class="jar-body">
+                            <div class="jar-label">
+                                <p class="tip-text">💝 Tip Jar<br>Keep supporting to help spreading love this valentine!</p>
+                            </div>
+                            <div class="qr-container">
+                                <img src="/static/upi-qr.png" alt="UPI QR" class="qr-code" onerror="this.style.display='none'">
+                                <p class="upi-id">hrithik.raj.543@okhdfcbank</p>
+                            </div>
+                            <div class="coins">
+                                <span class="coin">🪙</span>
+                                <span class="coin">🪙</span>
+                                <span class="coin">🪙</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cta-container">
+   <button type="submit">🌹 Create Rose</button>
+</div>
+
             </form>
             
             <div class="info">
                 Your rose will bloom for 24 hours
             </div>
         </div>
-        
-        <script>
+
+    <script>
             const textarea = document.getElementById('message');
             const charCount = document.getElementById('charCount');
             
@@ -760,7 +976,143 @@ def rose_page(name, message):
                 50% {{ transform: scale(1.2); }}
             }}
             
-            @media (max-width: 600px) {{
+            .tip-jar {{
+                margin-top: 30px;
+                text-align: center;
+                position: relative;
+            }}
+            
+            .jar-container {{
+                position: relative;
+                width: 180px;
+                margin: 0 auto;
+                padding-top: 15px;
+            }}
+            
+            .jar-lid {{
+                position: relative;
+                width: 100%;
+                height: 12px;
+                background: linear-gradient(135deg, #e91e63, #c2185b);
+                border-radius: 8px 8px 0 0;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }}
+            
+            .jar-lid::before {{
+                content: '';
+                position: absolute;
+                top: -4px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 40px;
+                height: 8px;
+                background: linear-gradient(135deg, #e91e63, #c2185b);
+                border-radius: 4px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+            }}
+            
+            .jar-body {{
+                position: relative;
+                width: 100%;
+                background: linear-gradient(180deg, 
+                    rgba(255, 255, 255, 0.9) 0%,
+                    rgba(255, 245, 248, 0.95) 50%,
+                    rgba(255, 230, 236, 0.9) 100%);
+                border: 3px solid rgba(233, 30, 99, 0.3);
+                border-top: none;
+                border-radius: 0 0 20px 20px;
+                padding: 20px 15px;
+                box-shadow: 
+                    inset 0 4px 8px rgba(255, 255, 255, 0.5),
+                    inset 0 -4px 8px rgba(233, 30, 99, 0.1),
+                    0 8px 16px rgba(0, 0, 0, 0.15);
+                backdrop-filter: blur(10px);
+            }}
+            
+            .jar-body::before {{
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 10%;
+                width: 30%;
+                height: 60%;
+                background: linear-gradient(135deg, 
+                    rgba(255, 255, 255, 0.6) 0%,
+                    rgba(255, 255, 255, 0) 100%);
+                border-radius: 20px 0 40px 0;
+                pointer-events: none;
+            }}
+            
+            .jar-label {{
+                background: rgba(255, 255, 255, 0.9);
+                border: 2px dashed #f8bbd0;
+                border-radius: 6px;
+                padding: 6px;
+                margin-bottom: 8px;
+                position: relative;
+                z-index: 1;
+            }}
+            
+            .tip-text {{
+                color: #c2185b;
+                font-size: 0.65em;
+                font-weight: 600;
+                line-height: 1.2;
+                margin: 0;
+            }}
+            
+            .coins {{
+                position: absolute;
+                bottom: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 1em;
+                opacity: 0.5;
+                display: flex;
+                gap: 2px;
+            }}
+            
+            .coin {{
+                animation: coinDrop 2s ease-in-out infinite;
+            }}
+            
+            .coin:nth-child(2) {{ animation-delay: 0.3s; }}
+            .coin:nth-child(3) {{ animation-delay: 0.6s; }}
+            
+            @keyframes coinDrop {{
+                0%, 100% {{ transform: translateY(0); }}
+                50% {{ transform: translateY(-4px); }}
+            }}
+            
+            .qr-container {{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 6px;
+                position: relative;
+                z-index: 1;
+            }}
+            
+            .qr-code {{
+                max-width: 90px;
+                width: 100%;
+                border-radius: 6px;
+                border: 2px solid rgba(233, 30, 99, 0.2);
+                box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            }}
+            
+            .upi-id {{
+                font-family: monospace;
+                font-size: 0.6em;
+                color: #666;
+                background: white;
+                padding: 3px 6px;
+                border-radius: 3px;
+                word-break: break-all;
+                border: 1px solid #f8bbd0;
+            }}
+            
+            @media (max-width: 768px) {{
                 .container {{
                     padding: 40px 30px;
                 }}
@@ -783,6 +1135,15 @@ def rose_page(name, message):
                 
                 .btn {{
                     min-width: 100%;
+                }}
+                
+                .main-wrapper {{
+                    flex-direction: column;
+                }}
+                
+                .tip-jar {{
+                    width: 100%;
+                    margin-top: 20px;
                 }}
             }}
         </style>
@@ -816,13 +1177,33 @@ def rose_page(name, message):
                 </div>
             </div>
             
+            <div class="tip-jar">
+                <div class="jar-container">
+                    <div class="jar-lid"></div>
+                    <div class="jar-body">
+                        <div class="jar-label">
+                            <p class="tip-text">💝 Tip Jar<br>Keep love spreading!</p>
+                        </div>
+                        <div class="qr-container">
+                            <img src="/static/upi-qr.png" alt="UPI QR" class="qr-code" onerror="this.style.display='none'">
+                            <p class="upi-id">your-upi-id@paytm</p>
+                        </div>
+                        <div class="coins">
+                            <span class="coin">🪙</span>
+                            <span class="coin">🪙</span>
+                            <span class="coin">🪙</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="actions">
                 <a href="/" class="btn btn-primary">🌹 Send Your Own Rose</a>
                 <a href="https://www.google.com/search?q=rose+day+quotes" target="_blank" class="btn btn-secondary">Get Inspired</a>
             </div>
         </div>
-        
-        <script>
+    
+    <script>
             // Set share link
             document.getElementById('shareLink').value = window.location.href;
             
@@ -1158,6 +1539,10 @@ def not_found_page():
                     font-size: 1.8em;
                 }
             }
+            .cta-container {
+    margin-top: 40px;
+}
+
         </style>
     </head>
     <body>
