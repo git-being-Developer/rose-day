@@ -427,13 +427,14 @@ def rose_page(name, message):
             body {{
                 font-family: 'Poppins', sans-serif;
                 min-height: 100vh;
-                padding: 30px 18px;
+                padding: 30px 18px 50px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 background: radial-gradient(circle at top, #1d1a2e 0%, #2f2346 35%, #462c52 70%, #1c1a2b 100%);
                 position: relative;
-                overflow: hidden;
+                overflow-x: hidden;
+                overflow-y: auto;
             }}
             body::before {{
                 content: '';
@@ -456,6 +457,22 @@ def rose_page(name, message):
                 0%, 100% {{ transform: translate(-5%, -5%); }}
                 50% {{ transform: translate(5%, 5%); }}
             }}
+            @keyframes floatIn {{
+                from {{ opacity: 0; transform: translateY(30px) scale(0.96); }}
+                to {{ opacity: 1; transform: translateY(0) scale(1); }}
+            }}
+            @keyframes popIn {{
+                from {{ opacity: 0; transform: scale(0.85) translateY(15px); }}
+                to {{ opacity: 1; transform: scale(1) translateY(0); }}
+            }}
+            @keyframes titleRise {{
+                from {{ opacity: 0; transform: translateY(12px); }}
+                to {{ opacity: 1; transform: translateY(0); }}
+            }}
+            @keyframes messageGlow {{
+                from {{ opacity: 0; transform: translateY(18px); box-shadow: inset 0 0 0 rgba(255,255,255,0); }}
+                to {{ opacity: 1; transform: translateY(0); box-shadow: inset 0 0 40px rgba(255,255,255,0.07); }}
+            }}
             .container {{
                 position: relative;
                 z-index: 1;
@@ -467,12 +484,13 @@ def rose_page(name, message):
                 border: 1px solid rgba(255,255,255,0.2);
                 box-shadow: 0 35px 80px rgba(3, 3, 8, 0.6);
                 backdrop-filter: blur(18px);
+                animation: floatIn 1s ease-out;
             }}
             .ring-icon {{
                 font-size: 4.5rem;
                 display: inline-block;
                 margin-bottom: 15px;
-                animation: float 3s ease-in-out infinite;
+                animation: float 3s ease-in-out infinite, popIn 0.7s ease-out;
                 filter: drop-shadow(0 15px 35px rgba(243, 186, 83, 0.35));
             }}
             @keyframes float {{ 0%,100% {{ transform: translateY(0); }} 50% {{ transform: translateY(-10px); }} }}
@@ -482,6 +500,7 @@ def rose_page(name, message):
                 color: #fef2dc;
                 text-align: center;
                 margin-bottom: 25px;
+                animation: titleRise 0.8s ease-out 0.2s both;
             }}
             h1 span {{ color: #f4c886; }}
             .message-box {{
@@ -497,6 +516,7 @@ def rose_page(name, message):
                 box-shadow: inset 0 0 40px rgba(255,255,255,0.07);
                 position: relative;
                 overflow: hidden;
+                animation: messageGlow 0.9s ease-out 0.4s both;
             }}
             .message-box::before {{
                 content: '';
@@ -602,7 +622,7 @@ def rose_page(name, message):
             .btn:hover {{ transform: translateY(-4px); }}
             .note {{ margin-top: 25px; text-align: center; color: #d2c3f8; font-size: 0.9rem; }}
             @media (max-width: 600px) {{
-                .container {{ padding: 40px 25px; }}
+                .container {{ padding: 35px 20px 40px; }}
                 h1 {{ font-size: 2rem; }}
                 .actions {{ flex-direction: column; }}
             }}
@@ -614,14 +634,7 @@ def rose_page(name, message):
             <div class=\"ring-icon\">💍</div>
             <h1>A Proposal for <span>{name}</span></h1>
             <div class=\"message-box\">
-                “{message}”
-            </div>
-            <div class=\"share-link\">
-                <p><strong>Share this private page:</strong></p>
-                <div class=\"link-box\">
-                    <input type=\"text\" class=\"link-input\" id=\"shareLink\" value=\"\" readonly />
-                    <button class=\"copy-btn\" onclick=\"copyLink()\">Copy</button>
-                </div>
+                "{message}"
             </div>
             <div class=\"tip-jar\">
                 <div class=\"jar-container\">
@@ -638,6 +651,13 @@ def rose_page(name, message):
                             <span class=\"coin\">🪙</span>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class=\"share-link\">
+                <p><strong>Share this private page:</strong></p>
+                <div class=\"link-box\">
+                    <input type=\"text\" class=\"link-input\" id=\"shareLink\" value=\"\" readonly />
+                    <button class=\"copy-btn\" onclick=\"copyLink()\">Copy</button>
                 </div>
             </div>
             <div class=\"actions\">
