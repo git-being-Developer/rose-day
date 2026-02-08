@@ -52,441 +52,360 @@ async def home():
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>🌹 Rose Day - Send Love That Lasts</title>
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+        <title>💍 Propose Day – Ask With Artistry</title>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
         <style>
             * {
                 margin: 0;
                 padding: 0;
                 box-sizing: border-box;
             }
-            
             body {
                 font-family: 'Poppins', sans-serif;
-                background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 50%, #f67280 100%);
+                background: radial-gradient(circle at 20% 20%, #fff4f4 0%, #ffe4d9 35%, #f8dfe5 60%, #e7d2ff 100%);
                 min-height: 100vh;
+                padding: 30px 20px 60px;
                 display: flex;
-                align-items: center;
                 justify-content: center;
-                padding: 20px;
+                align-items: center;
                 position: relative;
                 overflow-x: hidden;
             }
-            
-            .main-wrapper {
-                display: flex;
-                gap: 20px;
-                align-items: center;
-                justify-content: center;
-                max-width: 1400px;
-                width: 100%;
-                position: relative;
-                z-index: 10;
-            }
-            
-            .container {
-                background: rgba(255, 255, 255, 0.95);
-                border-radius: 30px;
-                padding: 50px 40px;
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-                max-width: 550px;
-                width: 100%;
-                animation: slideIn 0.8s ease-out;
-                backdrop-filter: blur(10px);
-                flex-shrink: 0;
-            }
-            
-            .rose-float {
+            body::before {
+                content: '';
                 position: absolute;
-                font-size: 30px;
-                opacity: 0.2;
-                animation: float 10s infinite ease-in-out;
+                inset: 0;
+                background: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+                opacity: 0.15;
+                mix-blend-mode: soft-light;
             }
-            
-            @keyframes float {
-                0%, 100% { transform: translateY(0) rotate(0deg); }
-                50% { transform: translateY(-30px) rotate(10deg); }
+            .floating-rings span {
+                position: absolute;
+                border: 2px solid rgba(255, 215, 138, 0.7);
+                border-radius: 50%;
+                animation: drift 18s linear infinite;
+                opacity: 0.4;
             }
-            
-            .container {
-                background: rgba(255, 255, 255, 0.95);
-                border-radius: 30px;
-                padding: 50px 40px;
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-                max-width: 550px;
+            .floating-rings span:nth-child(1) { width: 160px; height: 160px; top: 5%; left: 8%; animation-delay: 0s; }
+            .floating-rings span:nth-child(2) { width: 120px; height: 120px; bottom: 10%; right: 15%; animation-delay: -4s; }
+            .floating-rings span:nth-child(3) { width: 90px; height: 90px; top: 15%; right: 25%; animation-delay: -8s; }
+            @keyframes drift {
+                0% { transform: rotate(0deg) scale(1); }
+                50% { transform: rotate(180deg) scale(1.1); }
+                100% { transform: rotate(360deg) scale(1); }
+            }
+            .main-wrapper {
+                position: relative;
+                z-index: 2;
+                display: flex;
+                gap: 30px;
                 width: 100%;
-                animation: slideIn 0.8s ease-out;
-                backdrop-filter: blur(10px);
+                max-width: 1200px;
+                flex-wrap: wrap;
+                justify-content: center;
             }
-            
-            .container {
-                background: rgba(255, 255, 255, 0.95);
-                border-radius: 30px;
-                padding: 50px 40px;
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-                max-width: 550px;
-                width: 100%;
-                animation: slideIn 0.8s ease-out;
-                backdrop-filter: blur(10px);
+            .hero-card {
+                flex: 1;
+                min-width: 320px;
+                max-width: 450px;
+                background: rgba(255, 255, 255, 0.9);
+                border-radius: 28px;
+                padding: 40px;
+                box-shadow: 0 25px 60px rgba(183, 136, 197, 0.25);
+                border: 1px solid rgba(255, 255, 255, 0.6);
+                backdrop-filter: blur(12px);
             }
-            
-            @keyframes slideIn {
-                from {
-                    opacity: 0;
-                    transform: translateY(30px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
+            .eyebrow {
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                font-size: 0.75rem;
+                color: #c39a5b;
+                font-weight: 600;
+                margin-bottom: 12px;
             }
-            
-            h1 {
+            .hero-card h1 {
                 font-family: 'Playfair Display', serif;
-                color: #c2185b;
-                font-size: 2.5em;
-                margin-bottom: 10px;
-                text-align: center;
-                animation: fadeIn 1s ease-out 0.3s both;
+                font-size: 2.7rem;
+                line-height: 1.2;
+                color: #3c2b39;
+                margin-bottom: 18px;
             }
-            
-            @keyframes fadeIn {
-                from { opacity: 0; }
-                to { opacity: 1; }
+            .hero-card h1 span {
+                color: #c38f2f;
             }
-            
-            .subtitle {
-                text-align: center;
-                color: #666;
-                font-size: 0.95em;
-                margin-bottom: 35px;
-                font-weight: 300;
-            }
-            
-            .form-group {
+            .hero-text {
+                font-size: 1rem;
+                color: #6c5a6b;
                 margin-bottom: 25px;
             }
-            
+            .highlights {
+                list-style: none;
+                display: grid;
+                gap: 15px;
+            }
+            .highlights li {
+                display: flex;
+                gap: 12px;
+                align-items: flex-start;
+                font-size: 0.95rem;
+                color: #4d3a45;
+            }
+            .highlights li span {
+                font-size: 1.1rem;
+            }
+            .container {
+                flex: 1;
+                min-width: 320px;
+                max-width: 520px;
+                background: rgba(255, 255, 255, 0.96);
+                border-radius: 30px;
+                padding: 45px 40px;
+                box-shadow: 0 30px 70px rgba(121, 92, 158, 0.25);
+                border: 1px solid rgba(255, 255, 255, 0.8);
+                backdrop-filter: blur(15px);
+            }
+            h2 {
+                font-family: 'Playfair Display', serif;
+                font-size: 2rem;
+                color: #3a2740;
+                margin-bottom: 10px;
+                text-align: center;
+            }
+            .subtitle {
+                text-align: center;
+                color: #7c6a7f;
+                font-size: 0.95rem;
+                margin-bottom: 30px;
+            }
+            .form-group { margin-bottom: 22px; }
             label {
                 display: block;
-                color: #c2185b;
-                font-weight: 600;
-                margin-bottom: 8px;
-                font-size: 0.9em;
+                font-size: 0.85rem;
                 text-transform: uppercase;
-                letter-spacing: 0.5px;
+                letter-spacing: 0.08em;
+                color: #b38244;
+                font-weight: 600;
+                margin-bottom: 6px;
             }
-            
             input, textarea {
                 width: 100%;
-                padding: 15px 20px;
-                border: 2px solid #f8bbd0;
-                border-radius: 15px;
+                padding: 15px 18px;
+                border-radius: 18px;
+                border: 2px solid rgba(195, 143, 47, 0.2);
+                background: rgba(255, 255, 255, 0.95);
+                font-size: 1rem;
                 font-family: 'Poppins', sans-serif;
-                font-size: 16px;
-                transition: all 0.3s ease;
-                background: #fff;
+                transition: border 0.25s ease, box-shadow 0.25s ease;
             }
-            
             input:focus, textarea:focus {
                 outline: none;
-                border-color: #c2185b;
-                box-shadow: 0 0 0 4px rgba(194, 24, 91, 0.1);
-                transform: translateY(-2px);
+                border-color: #c38f2f;
+                box-shadow: 0 0 0 4px rgba(195, 143, 47, 0.15);
             }
-            
             textarea {
                 resize: vertical;
-                min-height: 120px;
+                min-height: 140px;
                 line-height: 1.6;
             }
-            
             .char-count {
                 text-align: right;
-                font-size: 0.8em;
-                color: #999;
-                margin-top: 5px;
+                font-size: 0.8rem;
+                color: #9c8a9e;
+                margin-top: 6px;
             }
-            
-            button {
-                width: 100%;
-                padding: 18px;
-                background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%);
-                color: white;
-                border: none;
-                border-radius: 15px;
-                font-size: 1.1em;
-                font-weight: 600;
-                cursor: pointer;
-                transition: all 0.3s ease;
-                font-family: 'Poppins', sans-serif;
-                text-transform: uppercase;
-                letter-spacing: 1px;
-                box-shadow: 0 10px 25px rgba(194, 24, 91, 0.3);
-            }
-            
-            button:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 15px 35px rgba(194, 24, 91, 0.4);
-            }
-            
-            button:active {
-                transform: translateY(-1px);
-            }
-            
-            .info {
-                text-align: center;
-                margin-top: 25px;
-                color: #666;
-                font-size: 0.85em;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 8px;
-            }
-            
-            .info::before {
-                content: "⏱️";
-            }
-            
             .tip-jar {
-                margin-top: 40px;
-                margin-bottom: 20px;
+                margin: 35px 0 25px;
                 text-align: center;
-                position: relative;
             }
-            .tip-jar::after {
-    content: "";
-    display: block;
-    width: 60%;
-    height: 1px;
-    background: rgba(194, 24, 91, 0.15);
-    margin: 30px auto 0;
-}
             .jar-container {
-                position: relative;
                 width: 180px;
                 margin: 0 auto;
-                padding-top: 15px;
-            }
-            
-            .jar-lid {
                 position: relative;
-                width: 100%;
-                height: 12px;
-                background: linear-gradient(135deg, #e91e63, #c2185b);
-                border-radius: 8px 8px 0 0;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             }
-            
+            .jar-lid {
+                height: 12px;
+                border-radius: 10px 10px 0 0;
+                background: linear-gradient(120deg, #c38f2f, #f8d18b);
+                box-shadow: 0 4px 10px rgba(195, 143, 47, 0.25);
+            }
             .jar-lid::before {
                 content: '';
                 position: absolute;
-                top: -4px;
+                top: -6px;
                 left: 50%;
                 transform: translateX(-50%);
-                width: 40px;
-                height: 8px;
-                background: linear-gradient(135deg, #e91e63, #c2185b);
-                border-radius: 4px;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+                width: 46px;
+                height: 9px;
+                border-radius: 12px;
+                background: linear-gradient(120deg, #d9a544, #f8d693);
             }
-            
             .jar-body {
-                position: relative;
-                width: 100%;
-                background: linear-gradient(180deg, 
-                    rgba(255, 255, 255, 0.9) 0%,
-                    rgba(255, 245, 248, 0.95) 50%,
-                    rgba(255, 230, 236, 0.9) 100%);
-                border: 3px solid rgba(233, 30, 99, 0.3);
+                background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255, 247, 232, 0.95));
+                border: 3px solid rgba(195, 143, 47, 0.35);
                 border-top: none;
-                border-radius: 0 0 20px 20px;
-                padding: 20px 15px;
-                box-shadow: 
-                    inset 0 4px 8px rgba(255, 255, 255, 0.5),
-                    inset 0 -4px 8px rgba(233, 30, 99, 0.1),
-                    0 8px 16px rgba(0, 0, 0, 0.15);
-                backdrop-filter: blur(10px);
+                border-radius: 0 0 22px 22px;
+                padding: 20px 15px 35px;
+                box-shadow: inset 0 4px 10px rgba(255, 255, 255, 0.6), inset 0 -4px 10px rgba(195, 143, 47, 0.15);
+                position: relative;
             }
-            
             .jar-body::before {
                 content: '';
                 position: absolute;
-                top: 0;
-                left: 10%;
-                width: 30%;
+                top: 10px;
+                left: 12%;
+                width: 28%;
                 height: 60%;
-                background: linear-gradient(135deg, 
-                    rgba(255, 255, 255, 0.6) 0%,
-                    rgba(255, 255, 255, 0) 100%);
-                border-radius: 20px 0 40px 0;
-                pointer-events: none;
+                border-radius: 18px;
+                background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0));
             }
-            
             .jar-label {
-                background: rgba(255, 255, 255, 0.9);
-                border: 2px dashed #f8bbd0;
-                border-radius: 8px;
+                border: 2px dashed rgba(195, 143, 47, 0.25);
+                border-radius: 10px;
                 padding: 8px;
-                margin-bottom: 12px;
-                position: relative;
-                z-index: 1;
+                background: rgba(255,255,255,0.9);
+                margin-bottom: 10px;
             }
-            
             .tip-text {
-                color: #c2185b;
-                font-size: 0.7em;
+                font-size: 0.7rem;
+                color: #8a6740;
                 font-weight: 600;
                 line-height: 1.3;
-                margin: 0;
             }
-            
-            .coins {
-                position: absolute;
-                bottom: 10px;
-                left: 50%;
-                transform: translateX(-50%);
-                font-size: 1em;
-                opacity: 0.5;
-                display: flex;
-                gap: 2px;
-            }
-            
-            .coin {
-                animation: coinDrop 2s ease-in-out infinite;
-            }
-            
-            .coin:nth-child(2) { animation-delay: 0.3s; }
-            .coin:nth-child(3) { animation-delay: 0.6s; }
-            
-            @keyframes coinDrop {
-                0%, 100% { transform: translateY(0); }
-                50% { transform: translateY(-4px); }
-            }
-            
             .qr-container {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 gap: 6px;
-                position: relative;
-                z-index: 1;
             }
-            
             .qr-code {
-                max-width: 90px;
-                width: 100%;
-                border-radius: 6px;
-                border: 2px solid rgba(233, 30, 99, 0.2);
-                box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+                width: 90px;
+                border-radius: 10px;
+                border: 2px solid rgba(195, 143, 47, 0.2);
+                box-shadow: 0 6px 16px rgba(195, 143, 47, 0.25);
             }
-            
             .upi-id {
                 font-family: monospace;
-                font-size: 0.6em;
-                color: #666;
-                background: white;
-                padding: 3px 6px;
-                border-radius: 3px;
-                word-break: break-all;
-                border: 1px solid #f8bbd0;
+                font-size: 0.7rem;
+                color: #71502e;
+                border: 1px solid rgba(195, 143, 47, 0.35);
+                border-radius: 4px;
+                padding: 4px 8px;
+                background: rgba(255,255,255,0.8);
             }
-            
-            @media (max-width: 600px) {
-                .container {
-                    padding: 35px 25px;
-                }
-                
-                h1 {
-                    font-size: 2em;
-                }
-                
-                .main-wrapper {
-                    flex-direction: column;
-                }
-                
-                .tip-jar {
-                    width: 100%;
-                    margin-top: 20px;
-                }
+            .coins {
+                position: absolute;
+                bottom: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                gap: 4px;
+                opacity: 0.6;
+            }
+            .coin { animation: coinDrop 2s ease-in-out infinite; }
+            .coin:nth-child(2) { animation-delay: 0.3s; }
+            .coin:nth-child(3) { animation-delay: 0.6s; }
+            @keyframes coinDrop {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-5px); }
+            }
+            button {
+                width: 100%;
+                padding: 18px;
+                border: none;
+                border-radius: 18px;
+                background: linear-gradient(120deg, #f9d976, #f39f86);
+                color: #3d2a2f;
+                font-size: 1.05rem;
+                font-weight: 600;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+                cursor: pointer;
+                box-shadow: 0 18px 35px rgba(243, 159, 134, 0.35);
+                transition: transform 0.25s ease, box-shadow 0.25s ease;
+            }
+            button:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 22px 45px rgba(243, 159, 134, 0.45);
+            }
+            button:active { transform: translateY(-1px); }
+            .info {
+                margin-top: 20px;
+                text-align: center;
+                font-size: 0.85rem;
+                color: #7b657a;
+                display: flex;
+                justify-content: center;
+                gap: 8px;
+            }
+            .info::before { content: '⏳'; }
+            @media (max-width: 960px) {
+                .main-wrapper { flex-direction: column; align-items: stretch; }
+            }
+            @media (max-width: 540px) {
+                body { padding: 20px 15px 50px; }
+                .container, .hero-card { padding: 30px 25px; }
+                .hero-card h1 { font-size: 2.1rem; }
             }
         </style>
     </head>
     <body>
-        <div class="rose-float" style="top: 10%; left: 10%;">🌹</div>
-        <div class="rose-float" style="top: 60%; right: 15%; animation-delay: -3s;">🌹</div>
-        <div class="rose-float" style="top: 80%; left: 20%; animation-delay: -6s;">🌹</div>
-        <div class="rose-float" style="top: 30%; right: 10%; animation-delay: -9s;">💝</div>
-        
+        <div class="floating-rings">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <div class="main-wrapper">
+            <section class="hero-card">
+                <p class="eyebrow">Propose Day • 24-hour keepsake</p>
+                <h1>💍 Ask the question<br><span>with poetry</span></h1>
+                <p class="hero-text">Pen your promise, let it live online for a full day, and send a link that feels as thoughtful as the moment.</p>
+                <ul class="highlights">
+                    <li><span>✨</span>Hand off a cinematic page with your words floating in soft gold glows.</li>
+                    <li><span>🔐</span>Each proposal auto-expires in 24 hours for privacy and exclusivity.</li>
+                    <li><span>🎁</span>Add a tip in the keepsake jar to keep the love-thon live all week.</li>
+                </ul>
+            </section>
             <div class="container">
-                <h1>🌹 Send a Rose</h1>
-                <p class="subtitle">A beautiful gesture that blooms for 24 hours</p>
-            
-            <form method="post" action="/create" id="roseForm">
-                <div class="form-group">
-                    <label for="to_name">For</label>
-                    <input 
-                        type="text" 
-                        id="to_name" 
-                        name="to_name" 
-                        placeholder="Enter their name..." 
-                        required 
-                        maxlength="100"
-                    />
-                </div>
-                
-                <div class="form-group">
-                    <label for="message">Your Message</label>
-                    <textarea 
-                        id="message" 
-                        name="message" 
-                        placeholder="Express your feelings..." 
-                        required 
-                        maxlength="500"
-                    ></textarea>
-                    <div class="char-count">
-                        <span id="charCount">0</span>/500 characters
+                <h2>Craft Your Proposal</h2>
+                <p class="subtitle">They open a bespoke page; you get the courage boost.</p>
+                <form method="post" action="/create" id="proposalForm">
+                    <div class="form-group">
+                        <label for="to_name">Who is this for?</label>
+                        <input type="text" id="to_name" name="to_name" placeholder="Their name..." required maxlength="100">
                     </div>
-                </div>
-                
-                <div class="tip-jar">
-                    <div class="jar-container">
-                        <div class="jar-lid"></div>
-                        <div class="jar-body">
-                            <div class="jar-label">
-                                <p class="tip-text">💝 Tip Jar<br>Keep supporting to help spreading love this valentine!</p>
-                            </div>
-                            <div class="qr-container">
-                                <img src="/static/upi-qr.png" alt="UPI QR" class="qr-code" onerror="this.style.display='none'">
-                                <p class="upi-id">hrithik.raj.543@okhdfcbank</p>
-                            </div>
-                            <div class="coins">
-                                <span class="coin">🪙</span>
-                                <span class="coin">🪙</span>
-                                <span class="coin">🪙</span>
+                    <div class="form-group">
+                        <label for="message">Your promise</label>
+                        <textarea id="message" name="message" placeholder="Tell them why forever starts now..." required maxlength="500"></textarea>
+                        <div class="char-count"><span id="charCount">0</span>/500 characters</div>
+                    </div>
+                    <div class="tip-jar">
+                        <div class="jar-container">
+                            <div class="jar-lid"></div>
+                            <div class="jar-body">
+                                <div class="jar-label">
+                                    <p class="tip-text">💝 Tip Jar<br>Fuel the servers & spread love all Propose Week.</p>
+                                </div>
+                                <div class="qr-container">
+                                    <img src="/static/upi-qr.png" alt="UPI QR" class="qr-code" onerror="this.style.display='none'">
+                                    <p class="upi-id">hrithik.raj.543@okhdfcbank</p>
+                                </div>
+                                <div class="coins">
+                                    <span class="coin">🪙</span>
+                                    <span class="coin">🪙</span>
+                                    <span class="coin">🪙</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="cta-container">
-   <button type="submit">🌹 Create Rose</button>
-</div>
-
-            </form>
-            
-            <div class="info">
-                Your rose will bloom for 24 hours
+                    <button type="submit">💌 Send the Proposal</button>
+                </form>
+                <div class="info">Your proposal stays live for exactly 24 hours.</div>
             </div>
         </div>
-
-    <script>
+        <script>
             const textarea = document.getElementById('message');
             const charCount = document.getElementById('charCount');
-            
-            textarea.addEventListener('input', function() {
+            textarea.addEventListener('input', function () {
                 charCount.textContent = this.value.length;
             });
         </script>
@@ -497,804 +416,246 @@ async def home():
 def rose_page(name, message):
     return f"""
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang=\"en\">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>🌹 A Rose for {name}</title>
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+        <meta charset=\"UTF-8\">
+        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+        <title>💍 A Proposal for {name}</title>
+        <link href=\"https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500;600&display=swap\" rel=\"stylesheet\">
         <style>
-            * {{
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }}
-            
+            * {{ margin: 0; padding: 0; box-sizing: border-box; }}
             body {{
                 font-family: 'Poppins', sans-serif;
-                background: linear-gradient(135deg, #c2185b 0%, #e91e63 50%, #f06292 100%);
                 min-height: 100vh;
+                padding: 30px 18px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                padding: 20px;
+                background: radial-gradient(circle at top, #1d1a2e 0%, #2f2346 35%, #462c52 70%, #1c1a2b 100%);
                 position: relative;
                 overflow: hidden;
             }}
-            
-            /* Animated gradient background */
             body::before {{
                 content: '';
                 position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: linear-gradient(135deg, 
-                    rgba(194, 24, 91, 0.8) 0%, 
-                    rgba(233, 30, 99, 0.8) 25%,
-                    rgba(240, 98, 146, 0.8) 50%,
-                    rgba(233, 30, 99, 0.8) 75%,
-                    rgba(194, 24, 91, 0.8) 100%);
-                background-size: 400% 400%;
-                animation: gradientShift 15s ease infinite;
-                z-index: 0;
+                inset: 0;
+                background: url('https://www.transparenttextures.com/patterns/gplay.png');
+                opacity: 0.12;
             }}
-            
-            @keyframes gradientShift {{
-                0%, 100% {{ background-position: 0% 50%; }}
-                50% {{ background-position: 100% 50%; }}
-            }}
-            
-            /* Floating particles */
-            .particles {{
+            .aurora {{
                 position: absolute;
-                width: 100%;
-                height: 100%;
-                overflow: hidden;
-                pointer-events: none;
-                z-index: 1;
+                width: 120%;
+                height: 120%;
+                background: radial-gradient(circle at 20% 20%, rgba(255,220,177,0.25), transparent 55%),
+                            radial-gradient(circle at 80% 30%, rgba(255,139,180,0.2), transparent 60%),
+                            radial-gradient(circle at 60% 70%, rgba(131,109,255,0.25), transparent 60%);
+                filter: blur(40px);
+                animation: sway 20s ease-in-out infinite;
             }}
-            
-            .particle {{
-                position: absolute;
-                width: 8px;
-                height: 8px;
-                background: radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 192, 203, 0.3));
-                border-radius: 50%;
-                animation: floatUp linear infinite;
-                box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            @keyframes sway {{
+                0%, 100% {{ transform: translate(-5%, -5%); }}
+                50% {{ transform: translate(5%, 5%); }}
             }}
-            
-            @keyframes floatUp {{
-                0% {{
-                    transform: translateY(100vh) scale(0);
-                    opacity: 0;
-                }}
-                10% {{
-                    opacity: 1;
-                }}
-                90% {{
-                    opacity: 1;
-                }}
-                100% {{
-                    transform: translateY(-100px) scale(1);
-                    opacity: 0;
-                }}
-            }}
-            
-            /* Falling petals with realistic motion */
-            .petals {{
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                overflow: hidden;
-                pointer-events: none;
-                z-index: 1;
-            }}
-            
-            .petal {{
-                position: absolute;
-                width: 15px;
-                height: 15px;
-                background: linear-gradient(135deg, rgba(255, 182, 193, 0.9), rgba(255, 105, 180, 0.7));
-                border-radius: 50% 0 50% 0;
-                animation: fall linear infinite;
-                filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-            }}
-            
-            @keyframes fall {{
-                0% {{
-                    transform: translateY(-10vh) rotate(0deg);
-                    opacity: 1;
-                }}
-                100% {{
-                    transform: translateY(110vh) rotate(720deg) translateX(100px);
-                    opacity: 0.3;
-                }}
-            }}
-            
-            /* Main container with stunning entrance */
             .container {{
-                background: rgba(255, 255, 255, 0.98);
-                border-radius: 30px;
-                padding: 60px 50px;
-                box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4),
-                            0 0 100px rgba(233, 30, 99, 0.3);
-                max-width: 650px;
+                position: relative;
+                z-index: 1;
                 width: 100%;
-                text-align: center;
-                animation: bloom 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-                backdrop-filter: blur(10px);
-                position: relative;
-                z-index: 10;
-                border: 2px solid rgba(255, 255, 255, 0.3);
+                max-width: 680px;
+                background: rgba(16, 15, 28, 0.75);
+                border-radius: 32px;
+                padding: 55px 50px;
+                border: 1px solid rgba(255,255,255,0.2);
+                box-shadow: 0 35px 80px rgba(3, 3, 8, 0.6);
+                backdrop-filter: blur(18px);
             }}
-            
-            @keyframes bloom {{
-                0% {{
-                    opacity: 0;
-                    transform: scale(0.1) rotate(-15deg);
-                    filter: blur(10px);
-                }}
-                50% {{
-                    transform: scale(1.1) rotate(5deg);
-                }}
-                100% {{
-                    opacity: 1;
-                    transform: scale(1) rotate(0deg);
-                    filter: blur(0);
-                }}
-            }}
-            
-            /* Animated 3D Rose */
-            .rose-container {{
-                position: relative;
+            .ring-icon {{
+                font-size: 4.5rem;
                 display: inline-block;
-                animation: roseEntrance 2s ease-out;
+                margin-bottom: 15px;
+                animation: float 3s ease-in-out infinite;
+                filter: drop-shadow(0 15px 35px rgba(243, 186, 83, 0.35));
             }}
-            
-            @keyframes roseEntrance {{
-                0% {{
-                    transform: translateY(50px) scale(0);
-                    opacity: 0;
-                }}
-                60% {{
-                    transform: translateY(-10px) scale(1.2);
-                }}
-                100% {{
-                    transform: translateY(0) scale(1);
-                    opacity: 1;
-                }}
-            }}
-            
-            .rose-icon {{
-                font-size: 6em;
-                display: inline-block;
-                animation: roseFloat 3s ease-in-out infinite;
-                filter: drop-shadow(0 10px 30px rgba(233, 30, 99, 0.5));
-                position: relative;
-            }}
-            
-            @keyframes roseFloat {{
-                0%, 100% {{
-                    transform: translateY(0) rotate(-5deg);
-                }}
-                50% {{
-                    transform: translateY(-20px) rotate(5deg);
-                }}
-            }}
-            
-            /* Sparkle effect around rose */
-            .rose-container::before,
-            .rose-container::after {{
-                content: '✨';
-                position: absolute;
-                font-size: 1.5em;
-                animation: sparkle 2s ease-in-out infinite;
-            }}
-            
-            .rose-container::before {{
-                top: 0;
-                left: -20px;
-                animation-delay: 0.5s;
-            }}
-            
-            .rose-container::after {{
-                top: 0;
-                right: -20px;
-                animation-delay: 1s;
-            }}
-            
-            @keyframes sparkle {{
-                0%, 100% {{
-                    opacity: 0;
-                    transform: scale(0) rotate(0deg);
-                }}
-                50% {{
-                    opacity: 1;
-                    transform: scale(1) rotate(180deg);
-                }}
-            }}
-            
-            /* Heart particles emanating from rose */
-            .hearts {{
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                pointer-events: none;
-            }}
-            
-            .heart {{
-                position: absolute;
-                font-size: 1.2em;
-                animation: heartFloat 3s ease-out infinite;
-                opacity: 0;
-            }}
-            
-            @keyframes heartFloat {{
-                0% {{
-                    transform: translate(0, 0) scale(0);
-                    opacity: 0;
-                }}
-                20% {{
-                    opacity: 1;
-                }}
-                100% {{
-                    transform: translate(var(--tx), var(--ty)) scale(1);
-                    opacity: 0;
-                }}
-            }}
-            
+            @keyframes float {{ 0%,100% {{ transform: translateY(0); }} 50% {{ transform: translateY(-10px); }} }}
             h1 {{
                 font-family: 'Playfair Display', serif;
-                color: #c2185b;
-                font-size: 2.5em;
-                margin: 20px 0 30px;
-                animation: fadeInDown 1s ease-out 0.5s both;
-                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-                position: relative;
+                font-size: 2.6rem;
+                color: #fef2dc;
+                text-align: center;
+                margin-bottom: 25px;
             }}
-            
-            /* Underline animation */
-            h1::after {{
-                content: '';
-                position: absolute;
-                bottom: -10px;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 0;
-                height: 3px;
-                background: linear-gradient(90deg, #c2185b, #e91e63);
-                animation: expandLine 1s ease-out 1s forwards;
-                border-radius: 2px;
-            }}
-            
-            @keyframes expandLine {{
-                to {{ width: 60%; }}
-            }}
-            
-            @keyframes fadeInDown {{
-                from {{
-                    opacity: 0;
-                    transform: translateY(-30px);
-                }}
-                to {{
-                    opacity: 1;
-                    transform: translateY(0);
-                }}
-            }}
-            
+            h1 span {{ color: #f4c886; }}
             .message-box {{
-                background: linear-gradient(135deg, #fff5f8 0%, #ffe5ec 100%);
-                border-left: 4px solid #e91e63;
-                padding: 30px;
-                border-radius: 20px;
-                margin: 30px 0;
-                animation: fadeInScale 1s ease-out 0.8s both;
-                box-shadow: 0 5px 20px rgba(233, 30, 99, 0.15);
+                margin: 30px auto;
+                padding: 35px;
+                border-radius: 24px;
+                background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255, 255, 255, 0.03));
+                border: 1px solid rgba(255,255,255,0.15);
+                color: #fdf7ef;
+                font-size: 1.25rem;
+                line-height: 1.8;
+                font-style: italic;
+                box-shadow: inset 0 0 40px rgba(255,255,255,0.07);
                 position: relative;
                 overflow: hidden;
             }}
-            
-            /* Shimmer effect on message box */
             .message-box::before {{
                 content: '';
                 position: absolute;
-                top: 0;
-                left: -100%;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(90deg, 
-                    transparent, 
-                    rgba(255, 255, 255, 0.5), 
-                    transparent);
-                animation: shimmer 3s ease-in-out infinite;
+                inset: -60% 0;
+                background: linear-gradient(120deg, rgba(244,200,134,0.25), transparent 60%);
+                animation: sheen 6s linear infinite;
             }}
-            
-            @keyframes shimmer {{
-                0%, 100% {{ left: -100%; }}
-                50% {{ left: 100%; }}
+            @keyframes sheen {{
+                0% {{ transform: translateX(-60%); }}
+                100% {{ transform: translateX(120%); }}
             }}
-            
-            @keyframes fadeInScale {{
-                from {{
-                    opacity: 0;
-                    transform: scale(0.8);
-                }}
-                to {{
-                    opacity: 1;
-                    transform: scale(1);
-                }}
-            }}
-            
-            .message {{
-                font-size: 1.3em;
-                line-height: 1.8;
-                color: #333;
-                font-weight: 300;
-                font-style: italic;
-                position: relative;
-                z-index: 1;
-            }}
-            
-            .actions {{
-                display: flex;
-                gap: 15px;
-                margin-top: 35px;
-                flex-wrap: wrap;
-                animation: fadeIn 1s ease-out 1.2s both;
-            }}
-            
-            @keyframes fadeIn {{
-                from {{ opacity: 0; }}
-                to {{ opacity: 1; }}
-            }}
-            
-            .btn {{
-                flex: 1;
-                min-width: 160px;
-                padding: 15px 25px;
-                border-radius: 15px;
-                font-size: 1em;
-                font-weight: 600;
-                cursor: pointer;
-                transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-                text-decoration: none;
-                display: inline-block;
-                font-family: 'Poppins', sans-serif;
-                position: relative;
-                overflow: hidden;
-            }}
-            
-            .btn::before {{
-                content: '';
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                width: 0;
-                height: 0;
-                border-radius: 50%;
-                background: rgba(255, 255, 255, 0.3);
-                transform: translate(-50%, -50%);
-                transition: width 0.6s, height 0.6s;
-            }}
-            
-            .btn:hover::before {{
-                width: 300px;
-                height: 300px;
-            }}
-            
-            .btn-primary {{
-                background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%);
-                color: white;
-                border: none;
-                box-shadow: 0 10px 25px rgba(194, 24, 91, 0.3);
-            }}
-            
-            .btn-primary:hover {{
-                transform: translateY(-5px) scale(1.05);
-                box-shadow: 0 20px 40px rgba(194, 24, 91, 0.4);
-            }}
-            
-            .btn-secondary {{
-                background: white;
-                color: #c2185b;
-                border: 2px solid #c2185b;
-            }}
-            
-            .btn-secondary:hover {{
-                background: #c2185b;
-                color: white;
-                transform: translateY(-5px) scale(1.05);
-                box-shadow: 0 15px 30px rgba(194, 24, 91, 0.3);
-            }}
-            
             .share-link {{
-                margin-top: 25px;
-                padding: 15px;
-                background: rgba(194, 24, 91, 0.05);
-                border-radius: 10px;
-                font-size: 0.85em;
-                color: #666;
-                animation: fadeIn 1s ease-out 1s both;
+                background: rgba(255,255,255,0.08);
+                border-radius: 18px;
+                padding: 18px;
+                border: 1px solid rgba(255,255,255,0.1);
+                color: #d5cdef;
+                margin-bottom: 30px;
             }}
-            
-            .link-box {{
-                display: flex;
-                gap: 10px;
-                margin-top: 10px;
-                align-items: center;
-            }}
-            
+            .link-box {{ display: flex; gap: 10px; margin-top: 12px; }}
             .link-input {{
                 flex: 1;
-                padding: 10px 15px;
-                border: 2px solid #f8bbd0;
-                border-radius: 10px;
+                padding: 12px 14px;
+                border-radius: 14px;
+                border: 1px solid rgba(244,200,134,0.4);
+                background: rgba(0,0,0,0.25);
+                color: #ffe7ca;
                 font-family: monospace;
-                font-size: 0.9em;
-                background: white;
-                transition: all 0.3s ease;
+                font-size: 0.95rem;
             }}
-            
-            .link-input:focus {{
-                outline: none;
-                border-color: #e91e63;
-                box-shadow: 0 0 10px rgba(233, 30, 99, 0.2);
-            }}
-            
             .copy-btn {{
-                padding: 10px 20px;
-                background: #c2185b;
-                color: white;
+                padding: 12px 18px;
+                border-radius: 14px;
                 border: none;
-                border-radius: 10px;
-                cursor: pointer;
+                background: linear-gradient(135deg, #f9d976, #f39f86);
+                color: #4b2d20;
                 font-weight: 600;
-                transition: all 0.3s ease;
-                position: relative;
+                cursor: pointer;
             }}
-            
-            .copy-btn:hover {{
-                background: #e91e63;
-                transform: scale(1.1);
-            }}
-            
-            .copy-btn:active {{
-                transform: scale(0.95);
-            }}
-            
-            .copied {{
-                background: #4caf50 !important;
-                animation: success 0.5s ease;
-            }}
-            
-            @keyframes success {{
-                0%, 100% {{ transform: scale(1); }}
-                50% {{ transform: scale(1.2); }}
-            }}
-            
-            .tip-jar {{
-                margin-top: 30px;
-                text-align: center;
-                position: relative;
-            }}
-            
-            .jar-container {{
-                position: relative;
-                width: 180px;
-                margin: 0 auto;
-                padding-top: 15px;
-            }}
-            
+            .tip-jar {{ text-align: center; margin: 25px 0 35px; }}
+            .jar-container {{ width: 180px; margin: 0 auto; position: relative; }}
             .jar-lid {{
-                position: relative;
-                width: 100%;
                 height: 12px;
-                background: linear-gradient(135deg, #e91e63, #c2185b);
-                border-radius: 8px 8px 0 0;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                border-radius: 10px 10px 0 0;
+                background: linear-gradient(120deg, #c38f2f, #f8d18b);
+                box-shadow: 0 4px 10px rgba(195, 143, 47, 0.25);
             }}
-            
             .jar-lid::before {{
                 content: '';
                 position: absolute;
-                top: -4px;
+                top: -6px;
                 left: 50%;
                 transform: translateX(-50%);
-                width: 40px;
-                height: 8px;
-                background: linear-gradient(135deg, #e91e63, #c2185b);
-                border-radius: 4px;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+                width: 46px;
+                height: 9px;
+                border-radius: 12px;
+                background: linear-gradient(120deg, #d9a544, #f8d693);
             }}
-            
             .jar-body {{
-                position: relative;
-                width: 100%;
-                background: linear-gradient(180deg, 
-                    rgba(255, 255, 255, 0.9) 0%,
-                    rgba(255, 245, 248, 0.95) 50%,
-                    rgba(255, 230, 236, 0.9) 100%);
-                border: 3px solid rgba(233, 30, 99, 0.3);
+                background: linear-gradient(180deg, rgba(255,255,255,0.15), rgba(255, 247, 232, 0.12));
+                border: 3px solid rgba(195, 143, 47, 0.35);
                 border-top: none;
-                border-radius: 0 0 20px 20px;
-                padding: 20px 15px;
-                box-shadow: 
-                    inset 0 4px 8px rgba(255, 255, 255, 0.5),
-                    inset 0 -4px 8px rgba(233, 30, 99, 0.1),
-                    0 8px 16px rgba(0, 0, 0, 0.15);
-                backdrop-filter: blur(10px);
-            }}
-            
-            .jar-body::before {{
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 10%;
-                width: 30%;
-                height: 60%;
-                background: linear-gradient(135deg, 
-                    rgba(255, 255, 255, 0.6) 0%,
-                    rgba(255, 255, 255, 0) 100%);
-                border-radius: 20px 0 40px 0;
-                pointer-events: none;
-            }}
-            
-            .jar-label {{
-                background: rgba(255, 255, 255, 0.9);
-                border: 2px dashed #f8bbd0;
-                border-radius: 6px;
-                padding: 6px;
-                margin-bottom: 8px;
+                border-radius: 0 0 22px 22px;
+                padding: 20px 15px 35px;
                 position: relative;
-                z-index: 1;
             }}
-            
-            .tip-text {{
-                color: #c2185b;
-                font-size: 0.65em;
+            .jar-label {{
+                border: 2px dashed rgba(195, 143, 47, 0.35);
+                border-radius: 10px;
+                padding: 8px;
+                background: rgba(22, 20, 34, 0.7);
+                color: #f4d8a8;
+                font-size: 0.7rem;
+                line-height: 1.4;
                 font-weight: 600;
-                line-height: 1.2;
-                margin: 0;
             }}
-            
-            .coins {{
-                position: absolute;
-                bottom: 10px;
-                left: 50%;
-                transform: translateX(-50%);
-                font-size: 1em;
-                opacity: 0.5;
-                display: flex;
-                gap: 2px;
-            }}
-            
-            .coin {{
-                animation: coinDrop 2s ease-in-out infinite;
-            }}
-            
+            .qr-container {{ display: flex; flex-direction: column; align-items: center; gap: 6px; }}
+            .qr-code {{ width: 95px; border-radius: 10px; border: 2px solid rgba(195, 143, 47, 0.35); box-shadow: 0 12px 25px rgba(0,0,0,0.35); }}
+            .upi-id {{ font-family: monospace; font-size: 0.75rem; color: #fceecd; background: rgba(0,0,0,0.35); padding: 4px 8px; border-radius: 4px; }}
+            .coins {{ position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 4px; opacity: 0.7; }}
+            .coin {{ animation: coinDrop 2s ease-in-out infinite; }}
             .coin:nth-child(2) {{ animation-delay: 0.3s; }}
             .coin:nth-child(3) {{ animation-delay: 0.6s; }}
-            
-            @keyframes coinDrop {{
-                0%, 100% {{ transform: translateY(0); }}
-                50% {{ transform: translateY(-4px); }}
+            @keyframes coinDrop {{ 0%,100% {{ transform: translateY(0); }} 50% {{ transform: translateY(-4px); }} }}
+            .actions {{ display: flex; gap: 15px; flex-wrap: wrap; }}
+            .btn {{
+                flex: 1;
+                min-width: 200px;
+                padding: 16px 24px;
+                border-radius: 16px;
+                font-weight: 600;
+                text-decoration: none;
+                text-align: center;
+                transition: transform 0.25s ease, box-shadow 0.25s ease;
             }}
-            
-            .qr-container {{
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 6px;
-                position: relative;
-                z-index: 1;
+            .btn-primary {{
+                background: linear-gradient(120deg, #f9d976, #f39f86);
+                color: #38231f;
+                box-shadow: 0 20px 40px rgba(243, 159, 134, 0.35);
             }}
-            
-            .qr-code {{
-                max-width: 90px;
-                width: 100%;
-                border-radius: 6px;
-                border: 2px solid rgba(233, 30, 99, 0.2);
-                box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-            }}
-            
-            .upi-id {{
-                font-family: monospace;
-                font-size: 0.6em;
-                color: #666;
-                background: white;
-                padding: 3px 6px;
-                border-radius: 3px;
-                word-break: break-all;
-                border: 1px solid #f8bbd0;
-            }}
-            
-            @media (max-width: 768px) {{
-                .container {{
-                    padding: 40px 30px;
-                }}
-                
-                h1 {{
-                    font-size: 1.8em;
-                }}
-                
-                .rose-icon {{
-                    font-size: 4em;
-                }}
-                
-                .message {{
-                    font-size: 1.1em;
-                }}
-                
-                .actions {{
-                    flex-direction: column;
-                }}
-                
-                .btn {{
-                    min-width: 100%;
-                }}
-                
-                .main-wrapper {{
-                    flex-direction: column;
-                }}
-                
-                .tip-jar {{
-                    width: 100%;
-                    margin-top: 20px;
-                }}
+            .btn-secondary {{ border: 1px solid rgba(255,255,255,0.4); color: #fbead6; }}
+            .btn:hover {{ transform: translateY(-4px); }}
+            .note {{ margin-top: 25px; text-align: center; color: #d2c3f8; font-size: 0.9rem; }}
+            @media (max-width: 600px) {{
+                .container {{ padding: 40px 25px; }}
+                h1 {{ font-size: 2rem; }}
+                .actions {{ flex-direction: column; }}
             }}
         </style>
     </head>
     <body>
-        <div class="particles" id="particles"></div>
-        <div class="petals" id="petals"></div>
-        
-        <div class="container">
-            <div class="rose-container">
-                <div class="hearts" id="hearts"></div>
-                <div class="rose-icon">🌹</div>
+        <div class=\"aurora\"></div>
+        <div class=\"container\">
+            <div class=\"ring-icon\">💍</div>
+            <h1>A Proposal for <span>{name}</span></h1>
+            <div class=\"message-box\">
+                “{message}”
             </div>
-            <h1>A Rose for {name}</h1>
-            
-            <div class="message-box">
-                <div class="message">"{message}"</div>
-            </div>
-            
-            <div class="share-link">
-                <p><strong>Share this rose:</strong></p>
-                <div class="link-box">
-                    <input 
-                        type="text" 
-                        class="link-input" 
-                        id="shareLink" 
-                        value="" 
-                        readonly 
-                    />
-                    <button class="copy-btn" onclick="copyLink()">Copy</button>
+            <div class=\"share-link\">
+                <p><strong>Share this private page:</strong></p>
+                <div class=\"link-box\">
+                    <input type=\"text\" class=\"link-input\" id=\"shareLink\" value=\"\" readonly />
+                    <button class=\"copy-btn\" onclick=\"copyLink()\">Copy</button>
                 </div>
             </div>
-            
-            <div class="tip-jar">
-                <div class="jar-container">
-                    <div class="jar-lid"></div>
-                    <div class="jar-body">
-                        <div class="jar-label">
-                            <p class="tip-text">💝 Tip Jar<br>Keep love spreading!</p>
+            <div class=\"tip-jar\">
+                <div class=\"jar-container\">
+                    <div class=\"jar-lid\"></div>
+                    <div class=\"jar-body\">
+                        <div class=\"jar-label\">💝 Tip Jar · Keep the proposal wall glowing</div>
+                        <div class=\"qr-container\">
+                            <img src=\"/static/upi-qr.png\" alt=\"UPI QR\" class=\"qr-code\" onerror=\"this.style.display='none'\">
+                            <p class=\"upi-id\">hrithik.raj.543@okhdfcbank</p>
                         </div>
-                        <div class="qr-container">
-                            <img src="/static/upi-qr.png" alt="UPI QR" class="qr-code" onerror="this.style.display='none'">
-                            <p class="upi-id">your-upi-id@paytm</p>
-                        </div>
-                        <div class="coins">
-                            <span class="coin">🪙</span>
-                            <span class="coin">🪙</span>
-                            <span class="coin">🪙</span>
+                        <div class=\"coins\">
+                            <span class=\"coin\">🪙</span>
+                            <span class=\"coin\">🪙</span>
+                            <span class=\"coin\">🪙</span>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <div class="actions">
-                <a href="/" class="btn btn-primary">🌹 Send Your Own Rose</a>
-                <a href="https://www.google.com/search?q=rose+day+quotes" target="_blank" class="btn btn-secondary">Get Inspired</a>
+            <div class=\"actions\">
+                <a href=\"/\" class=\"btn btn-primary\">💌 Craft Your Proposal</a>
+                <a href=\"https://www.pinterest.com/search/pins/?q=proposal%20quotes\" target=\"_blank\" class=\"btn btn-secondary\">Inspiration Board</a>
             </div>
+            <p class=\"note\">This proposal dissolves in 24 hours to keep your promise private.</p>
         </div>
-    
-    <script>
-            // Set share link
+        <script>
             document.getElementById('shareLink').value = window.location.href;
-            
-            // Copy link functionality
             function copyLink() {{
                 const input = document.getElementById('shareLink');
-                const btn = event.target;
-                
                 input.select();
                 navigator.clipboard.writeText(input.value).then(() => {{
-                    btn.textContent = '✓ Copied!';
-                    btn.classList.add('copied');
-                    
-                    setTimeout(() => {{
-                        btn.textContent = 'Copy';
-                        btn.classList.remove('copied');
-                    }}, 2000);
-                }}).catch(() => {{
-                    // Fallback for older browsers
-                    document.execCommand('copy');
-                    btn.textContent = '✓ Copied!';
-                    btn.classList.add('copied');
-                    
-                    setTimeout(() => {{
-                        btn.textContent = 'Copy';
-                        btn.classList.remove('copied');
-                    }}, 2000);
-                }});
-            }}
-            
-            // Create falling petals with variation
-            function createPetal() {{
-                const petal = document.createElement('div');
-                petal.classList.add('petal');
-                petal.style.left = Math.random() * 100 + '%';
-                petal.style.animationDuration = (Math.random() * 4 + 6) + 's';
-                petal.style.opacity = Math.random() * 0.6 + 0.4;
-                petal.style.animationDelay = Math.random() * 2 + 's';
-                petal.style.width = (Math.random() * 10 + 10) + 'px';
-                petal.style.height = petal.style.width;
-                document.getElementById('petals').appendChild(petal);
-                
-                setTimeout(() => petal.remove(), 10000);
-            }}
-            
-            // Create floating particles
-            function createParticle() {{
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDuration = (Math.random() * 5 + 8) + 's';
-                particle.style.animationDelay = Math.random() * 3 + 's';
-                document.getElementById('particles').appendChild(particle);
-                
-                setTimeout(() => particle.remove(), 13000);
-            }}
-            
-            // Create heart animations
-            function createHeart() {{
-                const heart = document.createElement('div');
-                heart.classList.add('heart');
-                heart.textContent = '💕';
-                
-                const angle = Math.random() * Math.PI * 2;
-                const distance = 100 + Math.random() * 100;
-                const tx = Math.cos(angle) * distance;
-                const ty = Math.sin(angle) * distance;
-                
-                heart.style.setProperty('--tx', tx + 'px');
-                heart.style.setProperty('--ty', ty + 'px');
-                heart.style.animationDelay = Math.random() * 2 + 's';
-                
-                document.getElementById('hearts').appendChild(heart);
-                
-                setTimeout(() => heart.remove(), 3000);
-            }}
-            
-            // Generate effects periodically
-            setInterval(createPetal, 400);
-            setInterval(createParticle, 800);
-            setInterval(createHeart, 1500);
-            
-            // Initial burst
-            for(let i = 0; i < 15; i++) {{
-                setTimeout(createPetal, i * 150);
-            }}
-            for(let i = 0; i < 8; i++) {{
-                setTimeout(createParticle, i * 300);
-            }}
-            for(let i = 0; i < 5; i++) {{
-                setTimeout(createHeart, i * 500);
+                    const btn = event.target;
+                    btn.textContent = 'Copied!';
+                    setTimeout(() => btn.textContent = 'Copy', 1800);
+                }}).catch(() => document.execCommand('copy'));
             }}
         </script>
     </body>
@@ -1308,127 +669,74 @@ def expired_page():
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>🥀 Rose Has Faded</title>
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+        <title>⌛ Proposal Window Closed</title>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
         <style>
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
-            
+            * { margin: 0; padding: 0; box-sizing: border-box; }
             body {
                 font-family: 'Poppins', sans-serif;
-                background: linear-gradient(135deg, #9e9e9e 0%, #757575 50%, #616161 100%);
                 min-height: 100vh;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                padding: 20px;
+                padding: 24px;
+                background: linear-gradient(135deg, #2b2c3b 0%, #1c1f2c 35%, #0f1220 100%);
+                color: #f7f0ff;
             }
-            
-            .container {
-                background: rgba(255, 255, 255, 0.95);
-                border-radius: 30px;
-                padding: 60px 50px;
-                box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
-                max-width: 550px;
+            .card {
+                max-width: 520px;
                 width: 100%;
+                background: rgba(20, 18, 33, 0.85);
+                border-radius: 28px;
+                padding: 50px 45px;
                 text-align: center;
-                animation: fadeIn 1s ease-out;
+                border: 1px solid rgba(255,255,255,0.15);
+                box-shadow: 0 30px 60px rgba(0,0,0,0.55);
             }
-            
-            @keyframes fadeIn {
-                from {
-                    opacity: 0;
-                    transform: translateY(20px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-            
             .icon {
-                font-size: 6em;
-                opacity: 0.7;
-                animation: droop 3s ease-in-out infinite;
+                font-size: 4rem;
+                margin-bottom: 18px;
+                display: inline-block;
+                animation: pulse 2.5s ease-in-out infinite;
             }
-            
-            @keyframes droop {
-                0%, 100% {
-                    transform: rotate(0deg);
-                }
-                50% {
-                    transform: rotate(-10deg);
-                }
-            }
-            
+            @keyframes pulse { 0%,100% { opacity: 0.6; transform: scale(1); } 50% { opacity: 1; transform: scale(1.1); } }
             h1 {
                 font-family: 'Playfair Display', serif;
-                color: #666;
-                font-size: 2.3em;
-                margin: 25px 0 20px;
+                font-size: 2.2rem;
+                margin-bottom: 15px;
             }
-            
             p {
-                font-size: 1.1em;
-                color: #777;
-                line-height: 1.8;
-                margin-bottom: 35px;
-                font-weight: 300;
+                color: #c9c2d9;
+                line-height: 1.7;
+                margin-bottom: 25px;
             }
-            
             .quote {
-                background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
-                padding: 25px;
-                border-radius: 15px;
-                margin: 30px 0;
+                border-left: 4px solid #f4c886;
+                padding-left: 18px;
+                margin: 25px 0;
                 font-style: italic;
-                color: #555;
+                color: #fce9ca;
             }
-            
-            .btn {
+            a {
                 display: inline-block;
-                padding: 18px 40px;
-                background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%);
-                color: white;
+                margin-top: 10px;
+                padding: 16px 36px;
+                border-radius: 16px;
+                background: linear-gradient(120deg, #f9d976, #f39f86);
+                color: #3a2620;
                 text-decoration: none;
-                border-radius: 15px;
                 font-weight: 600;
-                font-size: 1.1em;
-                transition: all 0.3s ease;
-                box-shadow: 0 10px 25px rgba(194, 24, 91, 0.3);
-            }
-            
-            .btn:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 15px 35px rgba(194, 24, 91, 0.4);
-            }
-            
-            @media (max-width: 600px) {
-                .container {
-                    padding: 40px 30px;
-                }
-                
-                h1 {
-                    font-size: 1.8em;
-                }
+                box-shadow: 0 15px 35px rgba(243, 159, 134, 0.35);
             }
         </style>
     </head>
     <body>
-        <div class="container">
-            <div class="icon">🥀</div>
-            <h1>This Rose Has Faded</h1>
-            <p>The beauty of a moment is that it doesn't last forever.</p>
-            
-            <div class="quote">
-                "Some gestures are meant to be felt in time,<br>
-                cherished in memory, and renewed with love."
-            </div>
-            
-            <a href="/" class="btn">🌹 Create a Fresh Rose</a>
+        <div class="card">
+            <div class="icon">⌛</div>
+            <h1>The moment slipped by</h1>
+            <p>This proposal link has gracefully retired after its 24-hour spotlight.</p>
+            <div class="quote">“Great gestures stay special because they live in memory, not forever online.”</div>
+            <a href="/">💌 Craft a fresh proposal</a>
         </div>
     </body>
     </html>
@@ -1441,120 +749,63 @@ def not_found_page():
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>🌹 Rose Not Found</title>
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+        <title>🔍 Proposal Not Found</title>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
         <style>
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
-            
+            * { margin: 0; padding: 0; box-sizing: border-box; }
             body {
                 font-family: 'Poppins', sans-serif;
-                background: linear-gradient(135deg, #5d4157 0%, #a8caba 100%);
                 min-height: 100vh;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                padding: 20px;
+                padding: 24px;
+                background: linear-gradient(135deg, #201f2c 0%, #2b2444 45%, #462d5f 100%);
+                color: #fef6ff;
             }
-            
-            .container {
-                background: rgba(255, 255, 255, 0.95);
-                border-radius: 30px;
-                padding: 60px 50px;
-                box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
-                max-width: 550px;
+            .card {
+                max-width: 540px;
                 width: 100%;
+                background: rgba(14, 12, 24, 0.85);
+                border-radius: 28px;
+                padding: 50px 40px;
                 text-align: center;
-                animation: fadeIn 1s ease-out;
+                border: 1px solid rgba(255,255,255,0.12);
+                box-shadow: 0 25px 65px rgba(6, 4, 12, 0.6);
             }
-            
-            @keyframes fadeIn {
-                from {
-                    opacity: 0;
-                    transform: translateY(20px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-            
             .icon {
-                font-size: 6em;
-                opacity: 0.8;
-                animation: sway 2s ease-in-out infinite;
+                font-size: 3.8rem;
+                margin-bottom: 15px;
             }
-            
-            @keyframes sway {
-                0%, 100% {
-                    transform: rotate(-5deg);
-                }
-                50% {
-                    transform: rotate(5deg);
-                }
-            }
-            
             h1 {
                 font-family: 'Playfair Display', serif;
-                color: #5d4157;
-                font-size: 2.3em;
-                margin: 25px 0 20px;
+                font-size: 2.3rem;
+                margin-bottom: 18px;
             }
-            
             p {
-                font-size: 1.1em;
-                color: #777;
-                line-height: 1.8;
-                margin-bottom: 35px;
-                font-weight: 300;
+                color: #cdc2df;
+                line-height: 1.7;
+                margin-bottom: 28px;
             }
-            
-            .btn {
+            a {
                 display: inline-block;
-                padding: 18px 40px;
-                background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%);
-                color: white;
-                text-decoration: none;
-                border-radius: 15px;
+                padding: 16px 32px;
+                border-radius: 16px;
+                background: linear-gradient(130deg, #f9d976, #f39f86);
+                color: #3b2420;
                 font-weight: 600;
-                font-size: 1.1em;
-                transition: all 0.3s ease;
-                box-shadow: 0 10px 25px rgba(194, 24, 91, 0.3);
+                text-decoration: none;
+                box-shadow: 0 15px 35px rgba(243, 159, 134, 0.35);
             }
-            
-            .btn:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 15px 35px rgba(194, 24, 91, 0.4);
-            }
-            
-            @media (max-width: 600px) {
-                .container {
-                    padding: 40px 30px;
-                }
-                
-                h1 {
-                    font-size: 1.8em;
-                }
-            }
-            .cta-container {
-    margin-top: 40px;
-}
-
         </style>
     </head>
     <body>
-        <div class="container">
+        <div class="card">
             <div class="icon">🔍</div>
-            <h1>Rose Not Found</h1>
-            <p>This rose doesn't exist or the link is incorrect.<br>
-            Perhaps it was never sent, or it bloomed and faded away.</p>
-            
-            <a href="/" class="btn">🌹 Send a Rose</a>
+            <h1>Proposal not found</h1>
+            <p>Either this link never existed, the URL was mistyped, or the heartfelt ask already expired.</p>
+            <a href="/">💍 Start a new proposal</a>
         </div>
     </body>
     </html>
     """
-
